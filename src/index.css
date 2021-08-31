@@ -23,4 +23,11 @@ a {
   text-decoration: none !important;
 }
 
+.ql-editor {
+  height: 80rem !important;
+  font-size: 1.8rem !important;
+  width: 60vw;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
