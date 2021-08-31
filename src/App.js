@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 
-function App() {
+import HomePage from './pages/home/home.component';
+import CatogoriesPage from './pages/catogories/catogories.component';
+import WritePage from './pages/write/write.component';
+
+import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Container>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/catogories" component={CatogoriesPage} />
+          <Route path="/write" component={WritePage} />
+        </Switch>
+      </Container>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
