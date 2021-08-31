@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => {
     AppBar: {
       boxShadow: 'none',
       borderBottom: `1px solid ${theme.palette.line.main}`,
-      padding: '0 4rem',
       [theme.breakpoints.down('sm')]: {
         padding: '0',
       },

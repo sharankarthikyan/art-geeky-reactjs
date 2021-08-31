@@ -1,10 +1,10 @@
-import MDCard from '../../components/card-md/card-md.component';
+import Quotes from '../../components/quotes/quotes.component';
 
 const HomePage = () => {
   return (
     <div>
       <div>Home</div>
-      <MDCard />
+      <Quotes />
     </div>
   );
 };
