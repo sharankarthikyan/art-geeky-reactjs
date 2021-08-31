@@ -1,10 +1,10 @@
-import Quotes from '../../components/quotes/quotes.component';
+import SigninModal from '../../components/signin/signin.component';
 
 const HomePage = () => {
   return (
     <div>
-      <div>Home</div>
-      <Quotes />
+      Home
+      <SigninModal></SigninModal>
     </div>
   );
 };

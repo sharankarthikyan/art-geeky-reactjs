@@ -7,6 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import TransitionsModal from '../signin/signin.component';
 
 const useStyles = makeStyles((theme) => {
   console.log(theme);
@@ -80,6 +83,7 @@ const useStyles = makeStyles((theme) => {
 const Header = (props) => {
   console.log(props);
   const classes = useStyles(props);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -120,7 +124,9 @@ const Header = (props) => {
             </div>
             <div className={classes.headerBtns}>
               <div>
-                <Button color="primary">Sign in</Button>
+                <Button color="primary" onClick={() => setShowModal(true)}>
+                  Sign in
+                </Button>
               </div>
               <div>
                 <Button
@@ -135,6 +141,10 @@ const Header = (props) => {
           </Toolbar>
         </Container>
       </AppBar>
+      <TransitionsModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+      />
     </div>
   );
 };
