@@ -1,35 +1,5 @@
 import styled from 'styled-components';
 
-export const SIModalInner = styled.div`
-  display: flex;
-`;
-
-export const SIModalInnerLeft = styled.div`
-  font-family: pacifico;
-
-  width: 44rem;
-  height: 68rem;
-  padding: 6rem;
-  background-color: #dfdd10;
-`;
-
-export const SIBrandName = styled.div`
-  color: #4177e3;
-  font-size: 4rem;
-`;
-
-export const SIWelMess = styled.div`
-  padding-top: 2rem;
-  font-size: 5rem;
-  color: #000;
-`;
-
-export const SIWelMess2 = styled.div`
-  padding-top: 4rem;
-  font-size: 5rem;
-  color: #a96cc8;
-`;
-
 export const SIModalInnerRight = styled.div`
   padding: 5.2rem 6.4rem 0 6.4rem;
 `;

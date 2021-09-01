@@ -5,6 +5,8 @@ import HomePage from './pages/home/home.component';
 import CatogoriesPage from './pages/catogories/catogories.component';
 import WritePage from './pages/write/write.component';
 
+import './App.css';
+
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 

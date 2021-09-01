@@ -39,7 +39,6 @@ export const FooterI18n = styled.div``;
 export const FooterSocialLinksOut = styled.div`
   display: flex;
   justify-content: center;
-  padding-right: 12rem;
 `;
 
 export const FooterSocialLinksIn = styled.div`

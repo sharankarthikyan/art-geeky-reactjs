@@ -9,7 +9,7 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import TransitionsModal from '../signin/signin.component';
+import DialogComp from '../login-signup/dialog/dialog.component';
 
 const useStyles = makeStyles((theme) => {
   console.log(theme);
@@ -81,9 +81,13 @@ const useStyles = makeStyles((theme) => {
 });
 
 const Header = (props) => {
-  console.log(props);
   const classes = useStyles(props);
-  const [showModal, setShowModal] = useState(false);
+  const [loginForm, setLoginForm] = useState(true);
+  const [authDialog, setauthDialog] = useState(false);
+
+  const handleCloseAuthDialog = () => {
+    setauthDialog(false);
+  };
 
   return (
     <div className={classes.root}>
@@ -124,7 +128,13 @@ const Header = (props) => {
             </div>
             <div className={classes.headerBtns}>
               <div>
-                <Button color="primary" onClick={() => setShowModal(true)}>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    setLoginForm(true);
+                    setauthDialog(true);
+                  }}
+                >
                   Sign in
                 </Button>
               </div>
@@ -133,6 +143,10 @@ const Header = (props) => {
                   variant="contained"
                   color="primary"
                   className={classes.btnSignup}
+                  onClick={() => {
+                    setLoginForm(false);
+                    setauthDialog(true);
+                  }}
                 >
                   Sign up
                 </Button>
@@ -141,9 +155,12 @@ const Header = (props) => {
           </Toolbar>
         </Container>
       </AppBar>
-      <TransitionsModal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
+
+      <DialogComp
+        open={authDialog}
+        onClose={handleCloseAuthDialog}
+        showLoginForm={loginForm}
+        setShowLoginForm={setLoginForm}
       />
     </div>
   );

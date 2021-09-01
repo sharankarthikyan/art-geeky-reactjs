@@ -30,6 +30,16 @@ const theme = createTheme({
         color: 'white',
       },
     },
+    MuiDialog: {
+      paperWidthSm: {
+        maxWidth: '96rem',
+      },
+    },
+    MuiPaper: {
+      root: {
+        transition: 'background 225ms ease-in',
+      },
+    },
   },
   typography: {
     htmlFontSize: 10,
