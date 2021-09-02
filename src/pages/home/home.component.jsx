@@ -1,5 +1,11 @@
+import HomeOverview from '../../components/home-overview/home-overview.component';
+
 const HomePage = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <HomeOverview />
+    </div>
+  );
 };
 
 export default HomePage;
