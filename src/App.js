@@ -33,6 +33,7 @@ const App = () => {
     <div>
       <Header />
       <Container>
+        {welcome}
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/catogories" component={CatogoriesPage} />
