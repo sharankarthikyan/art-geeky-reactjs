@@ -60,6 +60,8 @@ const useStyles = makeStyles((theme) => ({
   GoogleBtn: {
     width: '39.2rem',
     height: '4.8rem',
+    color: theme.palette.light.main,
+    border: '1px solid ' + theme.palette.light.main,
   },
   MarTop16: {
     marginTop: '1.6rem',

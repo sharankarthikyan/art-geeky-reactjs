@@ -25,7 +25,7 @@ export const CardImageCon = styled.div`
   position: relative;
   width: 40rem;
   height: 40rem;
-  background-color: #BCD1FF;
+  background-color: #bcd1ff;
   cursor: pointer;
 `;
 
@@ -41,6 +41,7 @@ export const CardCatTag = styled.div`
   text-transform: uppercase;
   font: normal normal 600 2rem/2.7rem Roboto, sans-serif;
   color: #6e798c;
+  flex-grow: 1;
 `;
 
 export const CardPostTime = styled.div`
@@ -79,7 +80,7 @@ export const CardAuthor = styled.div`
 `;
 
 export const CardAuthorImage = styled.div`
-  margin-top:0.5rem;
+  margin-top: 0.5rem;
 `;
 
 export const CardAuthorName = styled.div`
