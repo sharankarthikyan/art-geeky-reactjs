@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import {
   Button,
@@ -22,6 +22,8 @@ import {
   SignInLink,
   SocialBtnsList,
 } from './signup.styles';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
 const SignUpForm = ({ setShowLoginForm }) => {
   const classes = useStyles();
 
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+
   const [values, setValues] = React.useState({
     amount: '',
     password: '',
@@ -85,6 +90,21 @@ const SignUpForm = ({ setShowLoginForm }) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
+  const handleSignup = () => {
+    axios
+      .post('/api/local/signup', {
+        username,
+        email,
+        password: values.password,
+      })
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -94,7 +114,7 @@ const SignUpForm = ({ setShowLoginForm }) => {
   };
 
   return (
-    <Fade in="true" timeout={1000}>
+    <Fade in={true} timeout={1000}>
       <SUModalInnerRight>
         <SignUpText>Create an account</SignUpText>
         <TextFieldSection>
@@ -104,6 +124,8 @@ const SignUpForm = ({ setShowLoginForm }) => {
               id="outlined-basic1"
               label="Name"
               variant="outlined"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <TextField
@@ -111,6 +133,8 @@ const SignUpForm = ({ setShowLoginForm }) => {
             id="outlined-basic2"
             label="Email"
             variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </TextFieldSection>
         <PassField>
@@ -147,6 +171,7 @@ const SignUpForm = ({ setShowLoginForm }) => {
           className={classes.loginBtn}
           variant="contained"
           color="primary"
+          onClick={handleSignup}
         >
           SIGN UP
         </Button>
@@ -158,13 +183,15 @@ const SignUpForm = ({ setShowLoginForm }) => {
         </HaveAccText>
         <SocialBtnsList>
           <div>
-            <Button
-              className={classes.GoogleBtn}
-              variant="outlined"
-              color="primary"
-            >
-              Continue with Google
-            </Button>
+            <Link to="/api/auth/google/">
+              <Button
+                className={classes.GoogleBtn}
+                variant="outlined"
+                color="primary"
+              >
+                Continue with Google
+              </Button>
+            </Link>
           </div>
           <div className={classes.MarTop16}>
             <Button

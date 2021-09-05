@@ -5,11 +5,15 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
 import DialogComp from '../login-signup/dialog/dialog.component';
+
+import UserImage from '../../assets/profile-imgs/user1.svg';
 
 const useStyles = makeStyles((theme) => {
   console.log(theme);
@@ -80,7 +84,8 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Header = (props) => {
+const Header = ({ currentUser, ...props }) => {
+  console.log(currentUser);
   const classes = useStyles(props);
   const [loginForm, setLoginForm] = useState(true);
   const [authDialog, setauthDialog] = useState(false);
@@ -126,32 +131,36 @@ const Header = (props) => {
                 </div>
               </div>
             </div>
-            <div className={classes.headerBtns}>
-              <div>
-                <Button
-                  color="primary"
-                  onClick={() => {
-                    setLoginForm(true);
-                    setauthDialog(true);
-                  }}
-                >
-                  Sign in
-                </Button>
+            {currentUser ? (
+              <Avatar alt="Remy Sharp" src={UserImage} />
+            ) : (
+              <div className={classes.headerBtns}>
+                <div>
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      setLoginForm(true);
+                      setauthDialog(true);
+                    }}
+                  >
+                    Sign in
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.btnSignup}
+                    onClick={() => {
+                      setLoginForm(false);
+                      setauthDialog(true);
+                    }}
+                  >
+                    Sign up
+                  </Button>
+                </div>
               </div>
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.btnSignup}
-                  onClick={() => {
-                    setLoginForm(false);
-                    setauthDialog(true);
-                  }}
-                >
-                  Sign up
-                </Button>
-              </div>
-            </div>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
@@ -166,4 +175,8 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);

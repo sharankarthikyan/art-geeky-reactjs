@@ -12,6 +12,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { connect } from 'react-redux';
 
 import {
   SIModalInnerRight,
@@ -23,6 +24,8 @@ import {
   DontHaveAccText,
   SocialBtnsList,
 } from './signin.styles';
+import axios from 'axios';
+import { setCurrentUser } from '../../../redux/user/user.action';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,9 +71,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignInForm = ({ setShowLoginForm, closeDialog }) => {
+const SignInForm = ({
+  setShowLoginForm,
+  closeDialog,
+  setCurrentUser,
+  close,
+}) => {
   const classes = useStyles();
 
+  const [email, setEmail] = React.useState('');
   const [values, setValues] = React.useState({
     amount: '',
     password: '',
@@ -83,6 +92,24 @@ const SignInForm = ({ setShowLoginForm, closeDialog }) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (email && values.password) {
+      axios
+        .post('/api/local/login', {
+          email,
+          password: values.password,
+        })
+        .then(({ data }) => {
+          setCurrentUser(data);
+          closeDialog(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -92,7 +119,7 @@ const SignInForm = ({ setShowLoginForm, closeDialog }) => {
   };
 
   return (
-    <Fade in="true" timeout={1000}>
+    <Fade in={true} timeout={1000}>
       <SIModalInnerRight>
         <SignInText>Login</SignInText>
         <TextFieldSection>
@@ -101,6 +128,8 @@ const SignInForm = ({ setShowLoginForm, closeDialog }) => {
             id="outlined-basic"
             label="Email"
             variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </TextFieldSection>
         <PassField>
@@ -138,6 +167,7 @@ const SignInForm = ({ setShowLoginForm, closeDialog }) => {
           className={classes.loginBtn}
           variant="contained"
           color="primary"
+          onClick={handleLogin}
         >
           LOG IN
         </Button>
@@ -181,4 +211,8 @@ const SignInForm = ({ setShowLoginForm, closeDialog }) => {
   );
 };
 
-export default SignInForm;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(SignInForm);

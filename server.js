@@ -18,6 +18,8 @@ const userRouter = require(`${defaultPath}/user/user.routes`);
 // Auth based routes
 const googleOauthRouter = require(`${defaultPath}/auth/google-oauth.routes`);
 
+const localLoginRouter = require(`${defaultPath}/auth/local/login.routes`);
+const localSignupRouter = require(`${defaultPath}/auth/local/signup.routes`);
 const logoutRouter = require(`${defaultPath}/logout/logout.routes`);
 
 /* ------ Express App ------ */
@@ -50,6 +52,8 @@ app.use('/api/user', userRouter);
 // Auth based routes
 app.use('/api/auth/google', googleOauthRouter);
 
+app.use('/api/local/login', localLoginRouter);
+app.use('/api/local/signup', localSignupRouter);
 app.use('/api/logout', logoutRouter);
 
 /* ------ Comment below code while check sever and client in production ------ */

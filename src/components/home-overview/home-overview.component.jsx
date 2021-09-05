@@ -16,18 +16,18 @@ import SMcard from '../card-sm/card-sm.component';
 
 const HomeOverview = () => {
   const getMDcard = () => {
-    return [1, 2, 3].map(() => {
-      return <MDcard />;
+    return [1, 2, 3].map((_, index) => {
+      return <MDcard key={'Home_MDCard_' + index} />;
     });
   };
   const getSMcard = () => {
-    return [1, 2, 3, 4, 5, 6, 7, 8].map(() => {
-      return <SMcard />;
+    return [1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => {
+      return <SMcard key={'Home_SMCard_' + index} />;
     });
   };
   const getQuotes = () => {
-    return [1].map(() => {
-      return <Quotes />;
+    return [1].map((_, index) => {
+      return <Quotes key={'Home_Quote' + index} />;
     });
   };
   return (
