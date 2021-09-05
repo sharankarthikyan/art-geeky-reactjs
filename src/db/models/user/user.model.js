@@ -20,7 +20,6 @@ const User = mongoose.model('User', {
   },
   password: {
     type: String,
-    require: true,
     minlength: 7,
     trim: true,
     validate(value) {
@@ -28,6 +27,15 @@ const User = mongoose.model('User', {
         throw new Error("Don't give password with 1234");
       }
     },
+  },
+  googleId: {
+    type: String,
+  },
+  profileImage: {
+    type: String,
+  },
+  locale: {
+    type: String,
   },
 });
 

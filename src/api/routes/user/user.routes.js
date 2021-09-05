@@ -5,6 +5,7 @@ const User = require('../../../db/models/user/user.model');
 
 router.get('/', (req, res) => {
   res.set('Content-Type', 'application/json');
+  res.send({ name: 'Sharan' });
 });
 
 router.post('/', (req, res) => {
