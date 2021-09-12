@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const EditorOuter = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   margin: 1rem 0;
 `;

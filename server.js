@@ -14,6 +14,7 @@ const defaultPath = './src/api/routes';
 /* ------ Importing router from API folder ------ */
 // App Business logic core APIs
 const userRouter = require(`${defaultPath}/user/user.routes`);
+const articleRouter = require(`${defaultPath}/article/article.routes`);
 
 // Auth based routes
 const googleOauthRouter = require(`${defaultPath}/auth/google-oauth.routes`);
@@ -47,6 +48,7 @@ app.use(passport.session());
 /* ------ Buisness Logic ------ */
 // App Business logic core APIs
 app.use('/api/user', userRouter);
+app.use('/api/article', articleRouter);
 
 /* ------ Auth Routes ------ */
 // Auth based routes
@@ -76,15 +78,15 @@ app.use('/api/logout', logoutRouter);
 /* ------ Comment above code while check sever and client in production ------ */
 
 // Checking for production or dev
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'build')));
+// if (process.env.NODE_ENV === 'production') {
+app.use(express.static(path.join(__dirname, 'build')));
 
-  app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-} else if (process.env.NODE_ENV === 'development') {
-  app.use(express.static(path.join(__dirname, 'src', 'api', 'routes')));
-}
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+// } else if (process.env.NODE_ENV === 'development') {
+//   app.use(express.static(path.join(__dirname, 'src', 'api', 'routes')));
+// }
 
 module.exports = app;
 

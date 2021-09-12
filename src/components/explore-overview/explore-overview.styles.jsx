@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ExploreTitle = styled.div`
-display: flex;
-margin 6.3rem 0;
+  display: flex;
+  margin: 6.3rem 0;
 `;
 
 export const ExploreSubtitle = styled.div`
@@ -30,6 +30,7 @@ export const CardListItemMD = styled.div`
   gap: 3rem;
   @media only screen and (max-width: 768px) {
     justify-content: space-around;
+    margin: -13rem 0 12.2rem 0;
   }
 `;
 
@@ -41,5 +42,6 @@ export const CardListItemSM = styled.div`
   row-gap: 3rem;
   @media only screen and (max-width: 768px) {
     justify-content: space-around;
+    margin: 6.2rem 0 12.2rem 0;
   }
 `;

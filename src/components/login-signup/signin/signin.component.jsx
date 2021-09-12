@@ -26,6 +26,7 @@ import {
 } from './signin.styles';
 import axios from 'axios';
 import { setCurrentUser } from '../../../redux/user/user.action';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -179,13 +180,15 @@ const SignInForm = ({
         </DontHaveAccText>
         <SocialBtnsList>
           <div>
-            <Button
-              className={classes.GoogleBtn}
-              variant="outlined"
-              color="primary"
-            >
-              Continue with Google
-            </Button>
+            <Link to="/api/auth/google">
+              <Button
+                className={classes.GoogleBtn}
+                variant="outlined"
+                color="primary"
+              >
+                Continue with Google
+              </Button>
+            </Link>
           </div>
           <div className={classes.MarTop16}>
             <Button

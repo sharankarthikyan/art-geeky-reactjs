@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 
 import HomePage from './pages/home/home.component';
-import CatogoriesPage from './pages/catogories/catogories.component';
+import CatogoriesPage from './pages/categories/categories.component';
 import WritePage from './pages/write/write.component';
 import ExplorePage from './pages/explore/explore.component';
 

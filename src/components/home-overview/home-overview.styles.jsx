@@ -11,12 +11,20 @@ export const WelcomeLine = styled.p`
   font: normal normal 400 11rem/12.9rem Roboto;
   color: #000000;
   text-align: center;
+  // responsive
+  @media screen and (max-width: 992px) {
+    font: normal normal 400 8rem/12.9rem Roboto;
+  }
 `;
 
 export const ArtLine = styled.div`
   font: normal normal 400 7.6rem/13.3rem Pacifico;
   color: #785e6e;
   text-align: center;
+  // responsive
+  @media screen and (max-width: 992px) {
+    font: normal normal 400 4.6rem/13.3rem Pacifico;
+  }
 `;
 
 export const ExploreButton = styled.div`

@@ -10,15 +10,17 @@ router.post('/', (req, res) => {
   const requestData = req.body;
   User.findOne({ email: requestData.email }, (err, user) => {
     if (err) {
-      return res.send({ message: err });
+      return res.status(401).send({ message: err });
     }
     if (!user) {
-      return res.send({ message: 'No user found with this email...' });
+      return res
+        .status(401)
+        .send({ message: 'No user found with this email...' });
     } else {
       if (user.password === requestData.password) {
         return res.status(200).send(user);
       } else {
-        return res.send({ message: 'Invalid credentials' });
+        return res.status(401).send({ message: 'Invalid credentials' });
       }
     }
   });

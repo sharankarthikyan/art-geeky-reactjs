@@ -183,7 +183,7 @@ const SignUpForm = ({ setShowLoginForm }) => {
         </HaveAccText>
         <SocialBtnsList>
           <div>
-            <Link to="/api/auth/google/">
+            <Link to="/api/auth/google">
               <Button
                 className={classes.GoogleBtn}
                 variant="outlined"
