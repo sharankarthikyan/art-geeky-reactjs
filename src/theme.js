@@ -41,6 +41,19 @@ const theme = createTheme({
         color: 'white',
       },
     },
+    MuiTab: {
+      MuiButtonBase: {
+        defaultProps: {
+          // The props to change the default for.
+          disableRipple: true, // No more ripple!
+        },
+      },
+      styleOverrides: {
+        root: {
+          ':active': {},
+        },
+      },
+    },
     MuiDialog: {
       paperWidthSm: {
         maxWidth: '96rem',

@@ -75,21 +75,17 @@ const WriteOverview = () => {
         <Box sx={{ width: '100%', marginTop: '5.5rem' }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange}>
-              <Tab
-                label="Published"
-                {...a11yProps(0)}
-                sx={{ color: '#000000', opacity: '0.6' }}
-              />
-              <Tab label="Drafts" {...a11yProps(1)} />
+              <Tab label="Published" {...a11yProps(0)} disableRipple />
+              <Tab label="Drafts" {...a11yProps(1)} disableRipple />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <ArticleCard />
-            <ArticleCard />
-            <ArticleCard />
+            No article was published.
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
           </TabPanel>
         </Box>
       </WritePageContainer>
