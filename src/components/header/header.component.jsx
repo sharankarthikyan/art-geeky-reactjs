@@ -1,15 +1,15 @@
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Avatar from '@material-ui/core/Avatar';
-import Container from '@material-ui/core/Container';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { makeStyles } from '@mui/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Container from '@mui/material/Container';
 
 import DialogComp from '../login-signup/dialog/dialog.component';
 
@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => {
       },
     },
     title: {
-      fontFamily: 'pacifico',
+      fontFamily: 'pacifico !important',
     },
     AppBar: {
-      boxShadow: 'none',
+      boxShadow: 'none !important',
       borderBottom: `1px solid ${theme.palette.line.main}`,
       [theme.breakpoints.down('sm')]: {
         padding: '0',

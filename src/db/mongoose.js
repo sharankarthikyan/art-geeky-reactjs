@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const connectionURL = 'mongodb://127.0.0.1:27017/art-geeky-react';
+const connectionURL =
+  'mongodb+srv://dhinakarDB:dhinakarDB@cluster0.jdcbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(connectionURL).catch((error) => {
   console.log('MongoDB connect not established........');

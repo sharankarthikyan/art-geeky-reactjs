@@ -1,5 +1,5 @@
-import { red } from '@material-ui/core/colors';
-import { createTheme } from '@material-ui/core/styles';
+import { red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
 // A custom theme for this app
 const theme = createTheme({
@@ -24,8 +24,19 @@ const theme = createTheme({
       main: 'rgba(33, 33, 33, 0.08)',
     },
   },
-  overrides: {
+  components: {
     MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          ':active': {
+            boxShadow: 'none',
+          },
+          ':hover': {
+            boxShadow: 'none',
+          },
+        },
+      },
       contained: {
         color: 'white',
       },

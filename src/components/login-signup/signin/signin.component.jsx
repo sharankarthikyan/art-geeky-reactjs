@@ -7,11 +7,11 @@ import {
   IconButton,
   InputAdornment,
   InputLabel,
-  makeStyles,
   OutlinedInput,
   TextField,
-} from '@material-ui/core';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { connect } from 'react-redux';
 
 import {
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid ' + theme.palette.light.main,
   },
   MarTop16: {
-    marginTop: '1.6rem',
+    marginTop: '1.6rem !important',
   },
 }));
 
@@ -155,17 +155,17 @@ const SignInForm = ({
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }
-              labelWidth={70}
+              label="Password"
             />
           </FormControl>
         </PassField>
         <ForgetPassLine>forget password?</ForgetPassLine>
         <Button
-          className={classes.loginBtn}
+          className={clsx(classes.loginBtn, classes.MarTop16)}
           variant="contained"
           color="primary"
           onClick={handleLogin}

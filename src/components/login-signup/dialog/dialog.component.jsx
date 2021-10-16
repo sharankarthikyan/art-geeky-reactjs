@@ -1,7 +1,7 @@
 import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Modal from '@mui/material/Modal';
+
+import { makeStyles } from '@mui/styles';
 
 import Aside from '../aside/aside.component';
 import SignInForm from '../signin/signin.component';
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '25ch !important',
     },
   },
   modal: {
@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    width: '96rem',
-    height: '68rem',
+    backgroundColor: '#fff',
+    width: '96rem !important',
+    height: '68rem !important',
+    overflowY: 'none !important',
   },
   field: {
     width: '39.2rem',
@@ -49,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
   MarTop16: {
     marginTop: '1.6rem',
   },
+  dialog: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));
 
 const ResponsiveDialog = ({
@@ -58,15 +64,13 @@ const ResponsiveDialog = ({
   setShowLoginForm,
 }) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Dialog
-      fullScreen={fullScreen}
+    <Modal
       open={open}
       onClose={onClose}
       aria-labelledby="responsive-dialog-title"
+      className={classes.dialog}
     >
       <div className={classes.paper}>
         <SIModalInner>
@@ -83,7 +87,7 @@ const ResponsiveDialog = ({
           </div>
         </SIModalInner>
       </div>
-    </Dialog>
+    </Modal>
   );
 };
 

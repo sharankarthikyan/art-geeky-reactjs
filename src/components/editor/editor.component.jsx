@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
-import Alert from '@material-ui/lab/Alert';
-import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { connect } from 'react-redux';
 
 import { EditorOuter } from './editor.styles';
@@ -14,7 +14,7 @@ class Editor extends Component {
       theme: 'bubble',
       open: false,
       message: '',
-      severity: '',
+      severity: 'success',
       variant: '',
       elevation: 0,
     };

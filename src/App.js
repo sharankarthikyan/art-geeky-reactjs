@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 
 import HomePage from './pages/home/home.component';
 import CatogoriesPage from './pages/categories/categories.component';

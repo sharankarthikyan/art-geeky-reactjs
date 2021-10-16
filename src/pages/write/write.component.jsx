@@ -1,9 +1,9 @@
-import TextEditor from '../../components/editor/editor.component';
+import WriteOverview from '../../components/write-overview/write-overview.component';
 
 const Write = () => {
   return (
     <div>
-      <TextEditor placeholder="" />
+      <WriteOverview />
     </div>
   );
 };

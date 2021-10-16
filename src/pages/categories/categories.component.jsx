@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 
-import CategoriesOverview from '../../components/catogories-overview/catogories-overview.component';
+import CategoriesOverview from '../../components/categories-overview/categories-overview.component';
 import CategoryPage from '../category/category.component';
 
 const CatogoriesPage = ({ match }) => {

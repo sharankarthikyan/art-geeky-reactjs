@@ -1,5 +1,5 @@
-import { Container, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Container, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import {
   FooterRoot,
@@ -21,7 +21,7 @@ import GithubIcon from '../../assets/social-media-icons/github.svg';
 
 const useStyles = makeStyles((theme) => ({
   brandName: {
-    fontFamily: 'pacifico',
+    fontFamily: 'pacifico !important',
   },
   footerLinks: {
     fontSize: '1.2rem',
