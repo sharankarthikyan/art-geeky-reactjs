@@ -16,6 +16,7 @@
     "clsx": "^1.1.1",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
+    "countable": "^3.0.1",
     "create-react-class": "^15.7.0",
     "http-errors": "^1.8.0",
     "mongoose": "^6.0.4",

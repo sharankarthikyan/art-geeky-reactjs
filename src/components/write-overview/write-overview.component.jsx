@@ -1,5 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { makeStyles } from '@mui/styles';
+import { useHistory } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -9,6 +12,26 @@ import Button from '@mui/material/Button';
 import { WritePageContainer, CreateContent } from './write-overview.styles';
 
 import ArticleCard from '../article-card/article-card.component';
+
+import { createArticleUtil } from '../../api-utils/article/article.api-utils.js';
+
+const useStyles = makeStyles((theme) => {
+  return {
+    createBtn: {
+      border: '1px solid #785E6E !important',
+      color: '#785E6E !important',
+      width: '214px !important',
+      height: '36px !important',
+      boxSizing: 'border-box !important',
+      borderRadius: '4px !important',
+      padding: '1rem !important',
+      marginTop: '2.3rem !important',
+      font: 'normal normal 500 1.4rem/1.6rem Roboto !important',
+      letterSpacing: '1.25px !important',
+      textTransform: 'uppercase !important',
+    },
+  };
+});
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,31 +66,31 @@ function a11yProps(index) {
   };
 }
 
-const WriteOverview = () => {
+const WriteOverview = ({ currentUser, match }) => {
+  const classes = useStyles();
+  let history = useHistory();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleCreateBtn = () => {
+    createArticleUtil(currentUser._id, (articleCreateRes) => {
+      history.push(
+        `${match.path}/${currentUser.email}/${articleCreateRes.data.output._id}`
+      );
+    });
+  };
+
   return (
     <div>
       <WritePageContainer>
         <CreateContent>Create and publish your content.</CreateContent>
         <Button
           variant="outlined"
-          style={{
-            border: '1px solid #785E6E',
-            color: '#785E6E',
-            width: '214px',
-            height: '36px',
-            boxSizing: 'border-box',
-            borderRadius: '4px',
-            padding: '1rem',
-            marginTop: '2.3rem',
-            font: 'normal normal 500 1.4rem/1.6rem Roboto',
-            letterSpacing: '1.25px',
-            textTransform: 'uppercase',
-          }}
+          className={classes.createBtn}
+          onClick={handleCreateBtn}
         >
           create a new content
         </Button>
@@ -93,4 +116,10 @@ const WriteOverview = () => {
   );
 };
 
-export default WriteOverview;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+  };
+};
+
+export default connect(mapStateToProps)(WriteOverview);

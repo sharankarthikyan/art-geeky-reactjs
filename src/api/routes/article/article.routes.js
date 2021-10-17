@@ -6,30 +6,35 @@ const Article = require('../../../db/models/article/article.model');
 router.post('/', (req, res) => {
   const data = req.body;
 
+  console.log('data: ', data);
+
   new Article({
     userId: data.userId,
-    content: '',
-    category: '',
-    status: 'draft',
+    content: data.content,
+    category: data.category,
+    status: data.status,
   })
     .save()
-    .then(() => {
-      res.status(201).send({ message: 'added article' });
+    .then((success) => {
+      res.status(201).send({ output: success, message: 'Article created.' });
     })
     .catch((error) => {
-      res.status(400).send({ error });
+      res
+        .status(400)
+        .send({ output: error, message: 'Article creation failed.' });
     });
 });
 
-router.put('/:articleId', (req, res) => {
+router.put('/', (req, res) => {
   const data = req.body;
 
   // this data.id is article id.
   Article.updateOne(
-    { _id: data.id },
+    { _id: data.articleId },
     {
       content: data.content,
       category: data.category,
+      status: data.status,
     }
   )
     .then(() => {

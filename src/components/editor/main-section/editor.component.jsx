@@ -4,7 +4,12 @@ import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { connect } from 'react-redux';
 
-import { EditorOuter } from './editor.styles';
+import { EditorOverview, EditorOuter } from './editor.styles';
+
+import EditorLeft from '../left-section/editor-left.component';
+import EditorRight from '../right-section/editor-right.component';
+
+import { saveArticleUtil } from '../../../api-utils/article/article.api-utils';
 
 class Editor extends Component {
   constructor(props) {
@@ -39,6 +44,8 @@ class Editor extends Component {
 
   componentDidMount() {
     const _this = this;
+    const { match } = this.props;
+
     document.addEventListener('keydown', function (event) {
       if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {
         event.preventDefault();
@@ -46,6 +53,16 @@ class Editor extends Component {
         //   editorValue: document.querySelector('.ql-editor').innerHTML,
         // });
         if (_this.props.currentUser) {
+          console.log(match);
+          let editorContent = document.querySelector('.ql-editor').innerHTML;
+          saveArticleUtil(
+            match.params.articleId,
+            editorContent,
+            (articleSaveRes) => {
+              console.log('asr ', articleSaveRes);
+            }
+          );
+
           _this.setState({
             open: true,
             message: 'Saved Successfully.',
@@ -69,33 +86,39 @@ class Editor extends Component {
   render() {
     const { open, message, severity, variant, elevation } = this.state;
     return (
-      <EditorOuter>
-        <Snackbar
-          open={open}
-          autoHideDuration={3000}
-          onClose={this.handleClose}
-        >
-          <Alert
-            elevation={elevation}
-            variant={variant}
+      <EditorOverview>
+        <EditorLeft />
+        <EditorOuter>
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
             onClose={this.handleClose}
-            severity={severity}
           >
-            {message}
-          </Alert>
-        </Snackbar>
-        <ReactQuill
-          theme={this.state.theme}
-          onChange={this.handleChange}
-          value={this.state.editorHtml}
-          modules={Editor.modules}
-          formats={Editor.formats}
-          bounds={'.app'}
-          placeholder={
-            this.props.placeholder ? this.props.placeholder : 'Write a story...'
-          }
-        />
-      </EditorOuter>
+            <Alert
+              elevation={elevation}
+              variant={variant}
+              onClose={this.handleClose}
+              severity={severity}
+            >
+              {message}
+            </Alert>
+          </Snackbar>
+          <ReactQuill
+            theme={this.state.theme}
+            onChange={this.handleChange}
+            value={this.state.editorHtml}
+            modules={Editor.modules}
+            formats={Editor.formats}
+            bounds={'.app'}
+            placeholder={
+              this.props.placeholder
+                ? this.props.placeholder
+                : 'Write a story...'
+            }
+          />
+        </EditorOuter>
+        <EditorRight />
+      </EditorOverview>
     );
   }
 }
