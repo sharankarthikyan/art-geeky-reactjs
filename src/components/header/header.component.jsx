@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => {
     headerLeft: {
       display: 'flex',
       flexGrow: 1,
-      gap: '2.5rem',
+      gap: '2.5rem !important',
     },
     menuButton: {
       [theme.breakpoints.up('sm')]: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     Toolbar: {
-      padding: 0,
+      padding: '0 !important',
       [theme.breakpoints.down('sm')]: {},
     },
     brandName: {
@@ -51,18 +51,18 @@ const useStyles = makeStyles((theme) => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        paddingTop: '.5rem',
+        paddingTop: '.5rem !important',
       },
     },
     navLinks: {
       display: 'flex',
-      gap: '2.5rem',
+      gap: '2.5rem !important',
       [theme.breakpoints.down('sm')]: {
         display: 'none',
       },
     },
     navLink: {
-      paddingTop: '.5rem',
+      paddingTop: '.5rem !important',
       fontWeight: '400',
     },
     btnSignup: {
@@ -76,9 +76,9 @@ const useStyles = makeStyles((theme) => {
     },
     headerBtns: {
       display: 'flex',
-      gap: '2rem',
+      gap: '2rem !important',
       [theme.breakpoints.down('sm')]: {
-        gap: '0',
+        gap: '0 !important',
       },
     },
   };

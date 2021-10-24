@@ -39,12 +39,13 @@ router.put('/', (req, res) => {
   )
     .then(() => {
       res.status(201).json({
-        message: 'Thing updated successfully!',
+        message: 'Article updated successfully!',
       });
     })
     .catch((err) => {
       res.status(400).json({
-        error: err,
+        output: err,
+        message: 'Article update error.',
       });
     });
 });

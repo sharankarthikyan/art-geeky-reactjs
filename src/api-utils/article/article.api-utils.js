@@ -31,3 +31,21 @@ export const saveArticleUtil = (articleId, content) => {
       console.log(err);
     });
 };
+
+export const publishArticleUtil = (articleId, content, category, callback) => {
+  axios
+    .put('/api/article', {
+      articleId,
+      content,
+      category,
+      status: 'published',
+    })
+    .then((res) => {
+      console.log(res);
+      callback(res);
+    })
+    .catch((err) => {
+      console.log(err);
+      callback(err);
+    });
+};
