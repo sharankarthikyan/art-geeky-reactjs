@@ -1,3 +1,4 @@
+import React from "react";
 import CategoryCard from '../category-card/category-card.component';
 
 import { SubHeading, CardListItemMD } from './categories-overview.styles';

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from 'react';
 
 import { compose } from 'redux';
@@ -148,7 +149,7 @@ const Header = ({ currentUser, match,...props }) => {
                     onClick={() => {
                       setLoginForm(true);
                       setauthDialog(true);
-                    }}
+                    } }
                   >
                     Sign in
                   </Button>
