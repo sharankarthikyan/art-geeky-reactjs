@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import { compose } from 'redux';
+import { Link, useHistory, withRouter  } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { makeStyles } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
@@ -84,15 +87,19 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Header = ({ currentUser, ...props }) => {
+const Header = ({ currentUser, match,...props }) => {
   console.log(currentUser);
   const classes = useStyles(props);
   const [loginForm, setLoginForm] = useState(true);
   const [authDialog, setauthDialog] = useState(false);
+  let history = useHistory();
 
   const handleCloseAuthDialog = () => {
     setauthDialog(false);
   };
+  const renderProfile =()=>{
+    history.push(`/${currentUser.email}`)
+  }
 
   return (
     <div className={classes.root}>
@@ -132,7 +139,7 @@ const Header = ({ currentUser, ...props }) => {
               </div>
             </div>
             {currentUser ? (
-              <Avatar alt="Remy Sharp" src={UserImage} />
+              <Avatar alt="Remy Sharp" src={UserImage} style={{cursor:"pointer"}} onClick = {renderProfile}/>
             ) : (
               <div className={classes.headerBtns}>
                 <div>
@@ -179,4 +186,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
 
-export default connect(mapStateToProps)(Header);
+export default compose(withRouter,connect(mapStateToProps))(Header);

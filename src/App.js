@@ -5,6 +5,7 @@ import HomePage from './pages/home/home.component';
 import CatogoriesPage from './pages/categories/categories.component';
 import WritePage from './pages/write/write.component';
 import ExplorePage from './pages/explore/explore.component';
+import ProfilePage from './pages/profilepage/profilepage.component';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/catogories" component={CatogoriesPage} />
           <Route path="/write" component={WritePage} />
           <Route path="/explore" component={ExplorePage} />
+          <Route path="/:id" component={ProfilePage} />
         </Switch>
       </Container>
       <Footer />
