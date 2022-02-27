@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -141,7 +142,7 @@ const Header = ({ currentUser, ...props }) => {
                     onClick={() => {
                       setLoginForm(true);
                       setauthDialog(true);
-                    }}
+                    } }
                   >
                     Sign in
                   </Button>

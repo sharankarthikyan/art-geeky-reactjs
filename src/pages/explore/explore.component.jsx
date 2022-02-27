@@ -1,3 +1,4 @@
+import React from "react";
 import ExporeOverview from '../../components/explore-overview/explore-overview.component';
 
 const ExplorePage = () => {

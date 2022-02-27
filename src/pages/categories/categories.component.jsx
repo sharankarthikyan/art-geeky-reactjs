@@ -1,3 +1,4 @@
+import React from "react";
 import { Route } from 'react-router-dom';
 
 import CategoriesOverview from '../../components/categories-overview/categories-overview.component';

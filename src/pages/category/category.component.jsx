@@ -1,3 +1,4 @@
+import React from "react";
 import CategoryOverview from '../../components/categories-overview/categories-overview.component';
 
 const CategoryPage = () => {

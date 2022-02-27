@@ -1,3 +1,4 @@
+import React from "react";
 import { SIModalInnerLeft, SIBrandName, SIWelMess } from './aside.styles';
 
 const Aside = () => {
