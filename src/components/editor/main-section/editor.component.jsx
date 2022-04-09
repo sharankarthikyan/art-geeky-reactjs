@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
-import Alert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import { connect } from "react-redux";
 
-import { EditorOverview, EditorOuter } from './editor.styles';
+import { EditorOverview, EditorOuter } from "./editor.styles";
 
-import EditorLeft from '../left-section/editor-left.component';
-import EditorRight from '../right-section/editor-right.component';
+import EditorLeft from "../left-section/editor-left.component";
+import EditorRight from "../right-section/editor-right.component";
 
-import { saveArticleUtil } from '../../../api-utils/article/article.api-utils';
+import { saveArticleUtil } from "../../../api-utils/article/article.api-utils";
 
 class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorHtml: '',
-      theme: 'bubble',
+      editorHtml: "",
+      theme: "bubble",
       open: false,
-      message: '',
-      severity: 'success',
-      variant: '',
+      message: "",
+      severity: "success",
+      variant: "",
       elevation: 0,
     };
   }
@@ -30,12 +29,12 @@ class Editor extends Component {
   };
 
   handleThemeChange = (newTheme) => {
-    if (newTheme === 'core') newTheme = null;
+    if (newTheme === "core") newTheme = null;
     this.setState({ theme: newTheme });
   };
 
   handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -46,36 +45,36 @@ class Editor extends Component {
     const _this = this;
     const { match } = this.props;
 
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {
+    document.addEventListener("keydown", function (event) {
+      if (event.ctrlKey && (event.key === "s" || event.key === "S")) {
         event.preventDefault();
         // _this.setState({
         //   editorValue: document.querySelector('.ql-editor').innerHTML,
         // });
         if (_this.props.currentUser) {
           console.log(match);
-          let editorContent = document.querySelector('.ql-editor').innerHTML;
+          let editorContent = document.querySelector(".ql-editor").innerHTML;
           saveArticleUtil(
             match.params.articleId,
             editorContent,
             (articleSaveRes) => {
-              console.log('asr ', articleSaveRes);
+              console.log("asr ", articleSaveRes);
             }
           );
 
           _this.setState({
             open: true,
-            message: 'Saved Successfully.',
-            severity: 'success',
-            variant: 'filled',
+            message: "Saved Successfully.",
+            severity: "success",
+            variant: "filled",
             elevation: 6,
           });
         } else {
           _this.setState({
             open: true,
-            message: 'Login to continue.',
-            severity: 'error',
-            variant: 'filled',
+            message: "Login to continue.",
+            severity: "error",
+            variant: "filled",
             elevation: 6,
           });
         }
@@ -103,19 +102,6 @@ class Editor extends Component {
               {message}
             </Alert>
           </Snackbar>
-          <ReactQuill
-            theme={this.state.theme}
-            onChange={this.handleChange}
-            value={this.state.editorHtml}
-            modules={Editor.modules}
-            formats={Editor.formats}
-            bounds={'.app'}
-            placeholder={
-              this.props.placeholder
-                ? this.props.placeholder
-                : 'Write a story...'
-            }
-          />
         </EditorOuter>
         <EditorRight />
       </EditorOverview>
@@ -137,16 +123,16 @@ Editor.modules = {
   keyboard: {
     bindings: {
       strike: {
-        key: 'S',
+        key: "S",
         ctrlKey: true,
         shiftKey: true,
         handler: function (range, context) {
           const format = this.quill.getFormat(range);
-          this.quill.format('strike', !format.strike);
+          this.quill.format("strike", !format.strike);
         },
       },
       save: {
-        key: 's' || 'S',
+        key: "s" || "S",
         ctrlKey: true,
         handler: function (...args) {
           console.log(args);
@@ -155,17 +141,17 @@ Editor.modules = {
     },
   },
   toolbar: [
-    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ header: "1" }, { header: "2" }, { font: [] }],
     [{ size: [] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    ["bold", "italic", "underline", "strike", "blockquote"],
     [
-      { list: 'ordered' },
-      { list: 'bullet' },
-      { indent: '-1' },
-      { indent: '+1' },
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
     ],
-    ['link', 'image', 'video'],
-    ['clean'],
+    ["link", "image", "video"],
+    ["clean"],
   ],
   clipboard: {
     // toggle to add extra line breaks when pasting HTML:
@@ -177,20 +163,20 @@ Editor.modules = {
  * See https://quilljs.com/docs/formats/
  */
 Editor.formats = [
-  'header',
-  'font',
-  'size',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
-  'image',
-  'video',
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
 ];
 
 /*
