@@ -1,54 +1,54 @@
-import { red } from '@mui/material/colors';
-import { createTheme } from '@mui/material/styles';
+import { red } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
 
 // A custom theme for this app
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#4379E5',
+      main: "#4379E5",
     },
     secondary: {
-      main: '#19857b',
+      main: "#19857b",
     },
     light: {
-      main: 'rgba(0, 0, 0, 0.6)',
+      main: "rgba(0, 0, 0, 0.6)",
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#fff',
-      fade: '#F8F9FB',
+      default: "#fff",
+      fade: "#F8F9FB",
     },
     line: {
-      main: 'rgba(33, 33, 33, 0.08)',
+      main: "rgba(0, 0, 0, 0.15)",
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          boxShadow: 'none',
-          ':active': {
-            boxShadow: 'none',
+          boxShadow: "none",
+          ":active": {
+            boxShadow: "none",
           },
-          ':hover': {
-            boxShadow: 'none',
+          ":hover": {
+            boxShadow: "none",
           },
         },
       },
       contained: {
-        color: 'white',
+        color: "white",
       },
     },
     MuiDialog: {
       paperWidthSm: {
-        maxWidth: '96rem',
+        maxWidth: "96rem",
       },
     },
     MuiPaper: {
       root: {
-        transition: 'background 225ms ease-in',
+        transition: "background 225ms ease-in",
       },
     },
   },

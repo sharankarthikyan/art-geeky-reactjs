@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
+export const WelcomeContainer = styled.div`
+  align-items: center;
+  display: flex;
+  min-height: 600px;
+  height: calc(100vh - 94px);
+  padding: 0 16px;
+`;
+
 export const WelcomeArticle = styled.div`
   width: 100%;
-  height: calc(100vh - 6.5rem);
   background-color: #ffffff;
-  padding: 20.9rem 0 0 0;
 `;
 
 export const WelcomeLine = styled.p`
@@ -30,7 +36,9 @@ export const ArtLine = styled.div`
 export const ExploreButton = styled.div`
   width: 22.8rem;
   height: 4.8rem;
-  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(120, 94, 110, 0.2);
   color: #785e6e;
   border: 1px solid #785e6e;
@@ -43,13 +51,14 @@ export const ExploreButton = styled.div`
 export const SubHeading = styled.p`
   font: normal normal 900 3.6rem/4.21rem Roboto;
   color: #785e6e;
+  margin: 3rem 0;
 `;
 
 export const CardListItemLG = styled.div`
   justify-content: space-between;
-  margin: 6.2rem 0 12.2rem 0;
   display: flex;
   flex-wrap: wrap;
+  gap: 3rem;
   @media only screen and (max-width: 768px) {
     justify-content: space-around;
   }
@@ -57,9 +66,9 @@ export const CardListItemLG = styled.div`
 
 export const CardListItemMD = styled.div`
   justify-content: space-between;
-  margin: 6.2rem 0 12.2rem 0;
   display: flex;
   flex-wrap: wrap;
+  gap: 3rem;
   @media only screen and (max-width: 768px) {
     justify-content: space-around;
   }
@@ -67,10 +76,9 @@ export const CardListItemMD = styled.div`
 
 export const CardListItemSM = styled.div`
   justify-content: space-between;
-  margin: 6.2rem 4rem 12.2rem 0;
-  display: grid;
-  grid-template-columns: auto auto;
-  row-gap: 3.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
   @media only screen and (max-width: 768px) {
     justify-content: space-around;
   }

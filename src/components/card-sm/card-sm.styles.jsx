@@ -16,6 +16,11 @@ export const CardOuterContainer = styled.div`
   &:hover::after {
     opacity: 1;
   }
+
+  @media screen and (max-width: 500px) {
+    width: 36rem;
+    height: auto;
+  }
 `;
 
 export const CardImageCon = styled.div`

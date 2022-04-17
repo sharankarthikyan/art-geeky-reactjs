@@ -22,9 +22,9 @@ const Card = () => {
       <RightWriteContent>
         <DeleteIcon
           fontSize="medium"
-          sx={{ color: red[500], marginRight: 3 }}
+          sx={{ color: red[500], marginRight: 2 }}
         />
-        <EditIcon fontSize="medium" sx={{ color: teal[500], marginRight: 3 }} />
+        <EditIcon fontSize="medium" sx={{ color: teal[500], marginRight: 2 }} />
         <SendIcon fontSize="medium" />
       </RightWriteContent>
     </WriteCard>

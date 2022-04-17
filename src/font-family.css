@@ -1,0 +1,11 @@
+@font-face {
+    font-family:"Playfair-Display";
+    font-weight:500;
+    font-style:medium;
+    src:url("./assets/custom-fonts/PlayfairDisplay-Medium.ttf");
+}
+@font-face {
+    font-family:"Playfair-Display-Regular";
+    font-weight:400;
+    src:url("./assets/custom-fonts/PlayfairDisplay-Regular.ttf");
+}

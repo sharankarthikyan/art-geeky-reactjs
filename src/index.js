@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-import './index.css';
+import "./index.css";
+import "./font-family.css";
 
-import App from './App';
-import theme from './theme';
+import App from "./App";
+import theme from "./theme";
 
-import { store, persistor } from './redux/store';
+import { store, persistor } from "./redux/store";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,5 +23,5 @@ ReactDOM.render(
       </PersistGate>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
