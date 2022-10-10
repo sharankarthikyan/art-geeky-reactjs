@@ -49,9 +49,11 @@ export const ExploreButton = styled.div`
 `;
 
 export const SubHeading = styled.p`
+
   font: normal normal 900 3.6rem/4.21rem Roboto;
   color: #785e6e;
-  margin: 3rem 0;
+  margin-top: 6rem;
+  margin-bottom: 8rem;
 `;
 
 export const CardListItemLG = styled.div`
